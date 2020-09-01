@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_margin">10dp</dimen>
+    <dimen name="cardview_margin">10dp</dimen>
+    <dimen name="edittext_margin">10dp</dimen>
+
+</resources>
