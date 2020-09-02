@@ -22,25 +22,27 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="105dp">
 
             <ImageView
                 android:id="@+id/iv_top_learner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="185dp"
+                android:layout_height="85dp"
                 android:layout_margin="@dimen/image_margin"
                 android:layout_marginStart="4dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/skill_iq_trimmed"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.026"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintVertical_bias="0.026" />
 
             <TextView
                 android:id="@+id/tv_iq_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:layout_margin="@dimen/text_view_margin"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.15"
@@ -52,14 +54,14 @@
                 android:id="@+id/tv_iq_skilliq"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="37dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="34dp"
                 android:layout_marginBottom="44dp"
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_top_learner"
                 app:layout_constraintTop_toBottomOf="@+id/tv_iq_name"
-                app:layout_constraintVertical_bias="0.21" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/tv_iq_country"
@@ -68,9 +70,10 @@
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.774"
                 app:layout_constraintStart_toEndOf="@+id/tv_iq_skilliq"
                 app:layout_constraintTop_toBottomOf="@+id/tv_iq_name"
-                app:layout_constraintVertical_bias="0.395" />
+                app:layout_constraintVertical_bias="0.693" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
