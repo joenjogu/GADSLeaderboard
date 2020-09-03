@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 
 public interface LearningHoursService {
 
-    @GET
+    @GET("api/hours")
     Call<List<LearningHours>> getLearningHoursLeaderboard();
 }

@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 
 public interface SkillService {
 
-    @GET
+    @GET("api/skilliq")
     Call<List<SkillIQ>> getSkillIqLeaderboard();
 }

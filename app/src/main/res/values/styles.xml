@@ -7,4 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+<!--    <style name="TextViewFont">-->
+<!--        -->
+<!--        <item name="android:textFontWeight">14sp</item>-->
+<!--    </style>-->
+
 </resources>
