@@ -4,5 +4,7 @@
     <dimen name="cardview_margin">10dp</dimen>
     <dimen name="edittext_margin">10dp</dimen>
     <dimen name="text_view_margin">8dp</dimen>
+    <dimen name="name_text_size">18sp</dimen>
+    <dimen name="default_text_size">15sp</dimen>
 
 </resources>
