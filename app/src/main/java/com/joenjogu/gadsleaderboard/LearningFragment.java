@@ -8,8 +8,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 public class LearningFragment extends Fragment {
+
+    private HoursViewModel hoursViewModel;
+    private NetworkRepository repository;
+    private HoursViewModelFactory hoursViewModelFactory;
 
     @Nullable
     @Override
@@ -20,5 +25,10 @@ public class LearningFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        repository = new NetworkRepository();
+        hoursViewModelFactory = new HoursViewModelFactory(repository);
+        hoursViewModel = new ViewModelProvider(this, hoursViewModelFactory).get(HoursViewModel.class);
+
     }
 }

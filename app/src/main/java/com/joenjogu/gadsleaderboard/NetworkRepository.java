@@ -20,12 +20,4 @@ public class NetworkRepository {
         Call<List<SkillIQ>> skillCall = skillService.getSkillIqLeaderboard();
         return skillCall;
     }
-
-
-
-
-
-
-
-
 }
