@@ -3,12 +3,14 @@ package com.joenjogu.gadsleaderboard;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -19,13 +21,17 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainActivity extends AppCompatActivity {
 
+    static final String TAG = "Main Activity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar topAppBar = findViewById(R.id.topAppBar);
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         ViewPager2 viewPager = findViewById(R.id.viewPager);
+
         FragmentAdapter fragmentAdapter = new FragmentAdapter(
                 getSupportFragmentManager(),
                 getLifecycle());
@@ -42,15 +48,32 @@ public class MainActivity extends AppCompatActivity {
         });
         tabLayoutMediator.attach();
 
+        topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.menu_icon_submit) {
+                    Log.d(TAG, "onMenuItemClick: Submit Clicked");
+                    //Intent for Submission Activity
+                    Intent intent = new Intent(getApplicationContext(),SubmissionActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                Log.d(TAG, "onMenuItemClick: Submit Click Failed");
+                return false;
+            }
+        });
+
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menu_icon_submit) {
+            Log.d(TAG, "onOptionsItemSelected: Submit Icon Clicked");
             //Intent for Submission Activity
             Intent intent = new Intent(this,SubmissionActivity.class);
             startActivity(intent);
         }
+        Log.d(TAG, "onOptionsItemSelected: Action not recognised");
         return super.onOptionsItemSelected(item);
 
     }

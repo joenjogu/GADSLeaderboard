@@ -11,16 +11,22 @@ import android.widget.EditText;
 
 public class SubmissionActivity extends AppCompatActivity {
 
-    EditText et_firstName = findViewById(R.id.et_first_name);
-    EditText et_lastName = findViewById(R.id.et_last_name);
-    EditText et_email = findViewById(R.id.et_email);
-    EditText et_githubLink = findViewById(R.id.et_githublink);
-    Button et_submit = findViewById(R.id.btn_submit);
+    EditText et_firstName;
+    EditText et_lastName;
+    EditText et_email;
+    EditText et_githubLink;
+    Button et_submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submission);
+
+        et_firstName = findViewById(R.id.et_first_name);
+        et_lastName = findViewById(R.id.et_last_name);
+        et_email = findViewById(R.id.et_email);
+        et_githubLink = findViewById(R.id.et_githublink);
+        et_submit = findViewById(R.id.btn_submit);
 
         et_submit.setOnClickListener(new View.OnClickListener() {
             @Override
