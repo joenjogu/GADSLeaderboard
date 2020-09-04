@@ -64,17 +64,4 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.menu_icon_submit) {
-            Log.d(TAG, "onOptionsItemSelected: Submit Icon Clicked");
-            //Intent for Submission Activity
-            Intent intent = new Intent(this,SubmissionActivity.class);
-            startActivity(intent);
-        }
-        Log.d(TAG, "onOptionsItemSelected: Action not recognised");
-        return super.onOptionsItemSelected(item);
-
-    }
 }
