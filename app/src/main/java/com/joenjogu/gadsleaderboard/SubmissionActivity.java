@@ -3,18 +3,19 @@ package com.joenjogu.gadsleaderboard;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.PatternMatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class SubmissionActivity extends AppCompatActivity {
 
-    EditText et_firstName;
-    EditText et_lastName;
-    EditText et_email;
-    EditText et_githubLink;
+    TextInputEditText et_firstName;
+    TextInputEditText et_lastName;
+    TextInputEditText et_email;
+    TextInputEditText et_githubLink;
     Button et_submit;
 
     @Override
