@@ -200,6 +200,7 @@ public class SubmissionActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+
                 displayErrorDialog();
             }
         });
