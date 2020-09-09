@@ -49,10 +49,10 @@ public class SubmissionActivity extends AppCompatActivity {
         et_email_layout = findViewById(R.id.et_email_layout);
         et_githubLink_layout = findViewById(R.id.et_githublink_layout);
 
-        et_firstName.addTextChangedListener(new ValidationWatcher(et_firstName_layout, et_firstName));
-        et_lastName.addTextChangedListener(new ValidationWatcher(et_lastName_layout, et_lastName));
-        et_email.addTextChangedListener(new ValidationWatcher(et_email_layout, et_email));
-        et_githubLink.addTextChangedListener(new ValidationWatcher(et_githubLink_layout, et_githubLink));
+//        et_firstName.addTextChangedListener(new ValidationWatcher(et_firstName_layout, et_firstName));
+//        et_lastName.addTextChangedListener(new ValidationWatcher(et_lastName_layout, et_lastName));
+//        et_email.addTextChangedListener(new ValidationWatcher(et_email_layout, et_email));
+//        et_githubLink.addTextChangedListener(new ValidationWatcher(et_githubLink_layout, et_githubLink));
 
         et_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,130 +62,38 @@ public class SubmissionActivity extends AppCompatActivity {
                 String email = et_email.getText().toString().trim();
                 String githubLink = et_githubLink.getText().toString().trim();
 
-//                if (firstName.isEmpty()){
-//                    et_firstName.setError("Please Enter your First Name!");
-//                }
-//                if (lastName.isEmpty()){
-//                    et_lastName.setError("Please Enter your Last Name!");
-//                }
-//                if (email.isEmpty()){
-//                    et_email.setError("Please Enter your Email Address!");
-//                }
-//                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-//                    et_email.setError("Enter a valid Email Address!");
-//                }
-//                if (githubLink.isEmpty()){
-//                    et_githubLink.setError("Please Enter your Github Link!");
-//                }
-//                if (!Patterns.WEB_URL.matcher(githubLink).matches()){
-//                    et_githubLink.setError("Please Enter a valid Link!");
-//                }
-//
-//                if (et_firstName.getError().length() > 0
-//                        && et_lastName.getError().length() > 0
-//                        && et_email.getError().length() > 0
-//                        && et_githubLink.getError().length() > 0){
-//
-//
-//                }
-                if (TextUtils.isEmpty(et_firstName_layout.getError()) &&
-                        TextUtils.isEmpty(et_lastName_layout.getError()) &&
-                        TextUtils.isEmpty(et_email_layout.getError()) &&
-                        TextUtils.isEmpty(et_githubLink_layout.getError())){
+                if (TextUtils.isEmpty(firstName)){
+                    et_firstName.setError("Please Enter your First Name!");
+                }
+                if (TextUtils.isEmpty(lastName)){
+                    et_lastName.setError("Please Enter your Last Name!");
+                }
+                if (TextUtils.isEmpty(email)){
+                    et_email.setError("Please Enter your Email Address!");
+                }
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                    et_email.setError("Enter a valid Email Address!");
+                }
+                if (TextUtils.isEmpty(githubLink)){
+                    et_githubLink.setError("Please Enter your Github Link!");
+                }
+                if (!Patterns.WEB_URL.matcher(githubLink).matches()){
+                    et_githubLink.setError("Please Enter a valid Link!");
+                }
+
+                if (TextUtils.isEmpty(et_firstName.getError()) &&
+                        TextUtils.isEmpty(et_lastName.getError()) &&
+                        TextUtils.isEmpty(et_email.getError()) &&
+                        TextUtils.isEmpty(et_githubLink.getError())) {
 
                     if(submissionConfirmation()){
                         Toast.makeText(getBaseContext(), "Submitting...", Toast.LENGTH_LONG).show();
 //                        submitUserDetails(firstName, lastName, email, githubLink);
                     }
+
                 }
             }
         });
-    }
-
-    private class ValidationWatcher implements TextWatcher{
-
-        private TextInputLayout inputLayout;
-        private TextInputEditText editText;
-        public ValidationWatcher(TextInputLayout inputLayout, TextInputEditText editText) {
-            this.inputLayout = inputLayout;
-            this.editText = editText;
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            switch (editText.getId()){
-                case R.id.et_first_name:
-                case R.id.et_last_name:
-                    validateText(inputLayout, editText);
-                    break;
-                case R.id.et_email:
-                    validateEmail(inputLayout, editText);
-                    break;
-                case R.id.et_githublink:
-                    validateUrl(inputLayout, editText);
-                    break;
-            }
-
-        }
-    }
-
-    private void requestFocus(View view){
-        if (view.requestFocus()){
-            getWindow().setSoftInputMode(
-                    WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE
-            );
-        }
-    }
-
-    private boolean validateText(TextInputLayout inputLayout, TextInputEditText editText){
-        if (Objects.requireNonNull(editText.getText()).toString().trim().isEmpty()){
-            inputLayout.setErrorEnabled(true);
-            inputLayout.setError("This field cannot be empty");
-            return false;
-        }
-        return true;
-    }
-
-    private boolean validateEmail(TextInputLayout inputLayout, TextInputEditText editText){
-        if (Objects.requireNonNull(editText.getText()).toString().trim().isEmpty()){
-            inputLayout.setErrorEnabled(false);
-        } else {
-            String email = editText.getText().toString();
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                inputLayout.setError("Enter a valid Email Address!");
-                requestFocus(editText);
-            } else {
-                inputLayout.setErrorEnabled(false);
-            }
-            return false;
-        }
-        return true;
-    }
-
-    private boolean validateUrl(TextInputLayout inputLayout, TextInputEditText editText){
-        if (Objects.requireNonNull(editText.getText()).toString().trim().isEmpty()){
-            inputLayout.setErrorEnabled(false);
-        } else {
-            String url = editText.getText().toString();
-            if (!Patterns.WEB_URL.matcher(url).matches()) {
-                inputLayout.setError("Please Enter a valid Link!");
-                requestFocus(editText);
-            }else {
-                inputLayout.setErrorEnabled(false);
-            }
-            return false;
-        }
-        return true;
     }
 
     private void submitUserDetails(String firstName, String lastName, String email, String githubLink) {
