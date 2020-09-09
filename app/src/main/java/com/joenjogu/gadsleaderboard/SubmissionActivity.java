@@ -2,6 +2,7 @@ package com.joenjogu.gadsleaderboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -9,9 +10,10 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -91,7 +93,10 @@ public class SubmissionActivity extends AppCompatActivity {
                         TextUtils.isEmpty(et_email_layout.getError()) &&
                         TextUtils.isEmpty(et_githubLink_layout.getError())){
 
-                    submitUserDetails(firstName, lastName, email, githubLink);
+                    if(submissionConfirmation()){
+                        Toast.makeText(getBaseContext(), "Submitting...", Toast.LENGTH_LONG).show();
+//                        submitUserDetails(firstName, lastName, email, githubLink);
+                    }
                 }
             }
         });
@@ -144,7 +149,8 @@ public class SubmissionActivity extends AppCompatActivity {
 
     private boolean validateText(TextInputLayout inputLayout, TextInputEditText editText){
         if (Objects.requireNonNull(editText.getText()).toString().trim().isEmpty()){
-            inputLayout.setErrorEnabled(false);
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("This field cannot be empty");
             return false;
         }
         return true;
@@ -158,11 +164,10 @@ public class SubmissionActivity extends AppCompatActivity {
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 inputLayout.setError("Enter a valid Email Address!");
                 requestFocus(editText);
-                return false;
             } else {
                 inputLayout.setErrorEnabled(false);
-                return false;
             }
+            return false;
         }
         return true;
     }
@@ -175,11 +180,10 @@ public class SubmissionActivity extends AppCompatActivity {
             if (!Patterns.WEB_URL.matcher(url).matches()) {
                 inputLayout.setError("Please Enter a valid Link!");
                 requestFocus(editText);
-                return false;
             }else {
                 inputLayout.setErrorEnabled(false);
-                return false;
             }
+            return false;
         }
         return true;
     }
@@ -206,11 +210,39 @@ public class SubmissionActivity extends AppCompatActivity {
         });
     }
 
-    private void displayErrorDialog() {
+    private boolean submissionConfirmation() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.submission_confirmation);
+        dialog.show();
 
+        ImageView cancelButton = dialog.findViewById(R.id.btn_dialog_cancel);
+        Button yesButton = dialog.findViewById(R.id.btn_submit_yes);
+
+        cancelButton.setOnClickListener(view -> {dialog.cancel();});
+        final boolean[] responseArray = {false};
+        yesButton.setOnClickListener(view -> {
+            responseArray[0] = true;
+            dialog.dismiss();
+        });
+        boolean response = responseArray[0];
+        return response;
+    }
+
+    private void displayErrorDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.failed_submission);
+        dialog.show();
     }
 
     private void displaySuccessDialog() {
-
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.successful_submission);
+        dialog.show();
     }
 }
