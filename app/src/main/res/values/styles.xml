@@ -5,11 +5,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
-<!--    <style name="TextViewFont">-->
-<!--        -->
-<!--        <item name="android:textFontWeight">14sp</item>-->
-<!--    </style>-->
+        <item name="android:windowBackground" >@drawable/splash_screen_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
 
 </resources>
