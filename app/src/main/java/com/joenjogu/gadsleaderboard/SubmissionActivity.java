@@ -38,6 +38,8 @@ public class SubmissionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submission);
 
+        repository = new NetworkRepository();
+
         et_firstName = findViewById(R.id.et_first_name);
         et_lastName = findViewById(R.id.et_last_name);
         et_email = findViewById(R.id.et_email);
@@ -48,11 +50,6 @@ public class SubmissionActivity extends AppCompatActivity {
         et_lastName_layout = findViewById(R.id.et_last_name_layout);
         et_email_layout = findViewById(R.id.et_email_layout);
         et_githubLink_layout = findViewById(R.id.et_githublink_layout);
-
-//        et_firstName.addTextChangedListener(new ValidationWatcher(et_firstName_layout, et_firstName));
-//        et_lastName.addTextChangedListener(new ValidationWatcher(et_lastName_layout, et_lastName));
-//        et_email.addTextChangedListener(new ValidationWatcher(et_email_layout, et_email));
-//        et_githubLink.addTextChangedListener(new ValidationWatcher(et_githubLink_layout, et_githubLink));
 
         et_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,11 +83,7 @@ public class SubmissionActivity extends AppCompatActivity {
                         TextUtils.isEmpty(et_email.getError()) &&
                         TextUtils.isEmpty(et_githubLink.getError())) {
 
-                    if(submissionConfirmation()){
-                        Toast.makeText(getBaseContext(), "Submitting...", Toast.LENGTH_LONG).show();
-//                        submitUserDetails(firstName, lastName, email, githubLink);
-                    }
-
+                    submissionConfirmation(firstName, lastName, email, githubLink);
                 }
             }
         });
@@ -102,9 +95,10 @@ public class SubmissionActivity extends AppCompatActivity {
         repository.postUserDetails(firstName, lastName, email, githubLink).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d(TAG, "submitUserDetails: onResponse " + response.code());
                 if (response.isSuccessful()){
+                    Log.d(TAG, "submitUserDetails: successful");
                     displaySuccessDialog();
-                    Toast.makeText(getBaseContext(), "Submission Successful", Toast.LENGTH_LONG).show();
                 } else{
                     displayErrorDialog();
                 }
@@ -112,13 +106,14 @@ public class SubmissionActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-
+                Log.d(TAG, "submitUserDetails: failure");
+                t.printStackTrace();
                 displayErrorDialog();
             }
         });
     }
 
-    private boolean submissionConfirmation() {
+    private void submissionConfirmation(String firstName, String lastName, String email, String githubLink) {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
@@ -129,13 +124,10 @@ public class SubmissionActivity extends AppCompatActivity {
         Button yesButton = dialog.findViewById(R.id.btn_submit_yes);
 
         cancelButton.setOnClickListener(view -> {dialog.cancel();});
-        final boolean[] responseArray = {false};
         yesButton.setOnClickListener(view -> {
-            responseArray[0] = true;
+            submitUserDetails(firstName, lastName, email, githubLink);
             dialog.dismiss();
         });
-        boolean response = responseArray[0];
-        return response;
     }
 
     private void displayErrorDialog() {
