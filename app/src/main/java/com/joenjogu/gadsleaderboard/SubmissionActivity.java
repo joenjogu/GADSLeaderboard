@@ -32,6 +32,7 @@ public class SubmissionActivity extends AppCompatActivity {
     TextInputEditText et_firstName, et_lastName, et_email, et_githubLink;
     TextInputLayout et_firstName_layout, et_lastName_layout, et_email_layout, et_githubLink_layout;
     Button et_submit;
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,9 @@ public class SubmissionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_submission);
 
         repository = new NetworkRepository();
+
+        back = findViewById(R.id.iv_back);
+        back.setOnClickListener(view -> onBackPressed());
 
         et_firstName = findViewById(R.id.et_first_name);
         et_lastName = findViewById(R.id.et_last_name);
@@ -51,40 +55,37 @@ public class SubmissionActivity extends AppCompatActivity {
         et_email_layout = findViewById(R.id.et_email_layout);
         et_githubLink_layout = findViewById(R.id.et_githublink_layout);
 
-        et_submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String firstName = et_firstName.getText().toString().trim();
-                String lastName = et_lastName.getText().toString().trim();
-                String email = et_email.getText().toString().trim();
-                String githubLink = et_githubLink.getText().toString().trim();
+        et_submit.setOnClickListener(view -> {
+            String firstName = et_firstName.getText().toString().trim();
+            String lastName = et_lastName.getText().toString().trim();
+            String email = et_email.getText().toString().trim();
+            String githubLink = et_githubLink.getText().toString().trim();
 
-                if (TextUtils.isEmpty(firstName)){
-                    et_firstName.setError("Please Enter your First Name!");
-                }
-                if (TextUtils.isEmpty(lastName)){
-                    et_lastName.setError("Please Enter your Last Name!");
-                }
-                if (TextUtils.isEmpty(email)){
-                    et_email.setError("Please Enter your Email Address!");
-                }
-                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                    et_email.setError("Enter a valid Email Address!");
-                }
-                if (TextUtils.isEmpty(githubLink)){
-                    et_githubLink.setError("Please Enter your Github Link!");
-                }
-                if (!Patterns.WEB_URL.matcher(githubLink).matches()){
-                    et_githubLink.setError("Please Enter a valid Link!");
-                }
+            if (TextUtils.isEmpty(firstName)){
+                et_firstName.setError("Please Enter your First Name!");
+            }
+            if (TextUtils.isEmpty(lastName)){
+                et_lastName.setError("Please Enter your Last Name!");
+            }
+            if (TextUtils.isEmpty(email)){
+                et_email.setError("Please Enter your Email Address!");
+            }
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                et_email.setError("Enter a valid Email Address!");
+            }
+            if (TextUtils.isEmpty(githubLink)){
+                et_githubLink.setError("Please Enter your Github Link!");
+            }
+            if (!Patterns.WEB_URL.matcher(githubLink).matches()){
+                et_githubLink.setError("Please Enter a valid Link!");
+            }
 
-                if (TextUtils.isEmpty(et_firstName.getError()) &&
-                        TextUtils.isEmpty(et_lastName.getError()) &&
-                        TextUtils.isEmpty(et_email.getError()) &&
-                        TextUtils.isEmpty(et_githubLink.getError())) {
+            if (TextUtils.isEmpty(et_firstName.getError()) &&
+                    TextUtils.isEmpty(et_lastName.getError()) &&
+                    TextUtils.isEmpty(et_email.getError()) &&
+                    TextUtils.isEmpty(et_githubLink.getError())) {
 
-                    submissionConfirmation(firstName, lastName, email, githubLink);
-                }
+                submissionConfirmation(firstName, lastName, email, githubLink);
             }
         });
     }

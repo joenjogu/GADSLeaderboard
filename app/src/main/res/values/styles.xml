@@ -10,4 +10,11 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="SubmissionTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+    </style>
+
 </resources>
