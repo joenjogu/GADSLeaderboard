@@ -4,22 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
-import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,8 +23,7 @@ public class SubmissionActivity extends AppCompatActivity {
     static final String TAG = "SubmissionActivity";
 
     private NetworkRepository repository;
-    TextInputEditText et_firstName, et_lastName, et_email, et_githubLink;
-    TextInputLayout et_firstName_layout, et_lastName_layout, et_email_layout, et_githubLink_layout;
+    EditText et_firstName, et_lastName, et_email, et_githubLink;
     Button et_submit;
     ImageView back;
 
@@ -50,10 +43,7 @@ public class SubmissionActivity extends AppCompatActivity {
         et_githubLink = findViewById(R.id.et_githublink);
         et_submit = findViewById(R.id.btn_submit);
 
-        et_firstName_layout = findViewById(R.id.et_first_name_layout);
-        et_lastName_layout = findViewById(R.id.et_last_name_layout);
-        et_email_layout = findViewById(R.id.et_email_layout);
-        et_githubLink_layout = findViewById(R.id.et_githublink_layout);
+        et_firstName.requestFocus();
 
         et_submit.setOnClickListener(view -> {
             String firstName = et_firstName.getText().toString().trim();

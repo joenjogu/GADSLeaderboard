@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabItem;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar topAppBar = findViewById(R.id.topAppBar);
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         ViewPager2 viewPager = findViewById(R.id.viewPager);
+        Button submit = findViewById(R.id.menu_btn_submit);
 
         FragmentAdapter fragmentAdapter = new FragmentAdapter(
                 getSupportFragmentManager(),
@@ -48,20 +50,26 @@ public class MainActivity extends AppCompatActivity {
         });
         tabLayoutMediator.attach();
 
-        topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.menu_icon_submit) {
-                    Log.d(TAG, "onMenuItemClick: Submit Clicked");
-                    //Intent for Submission Activity
-                    Intent intent = new Intent(getApplicationContext(),SubmissionActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-                Log.d(TAG, "onMenuItemClick: Submit Click Failed");
-                return false;
-            }
+        submit.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(),SubmissionActivity.class);
+            startActivity(intent);
         });
+
+
+//        topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                if (item.getItemId() == R.id.menu_icon_submit) {
+//                    Log.d(TAG, "onMenuItemClick: Submit Clicked");
+//                    //Intent for Submission Activity
+//                    Intent intent = new Intent(getApplicationContext(),SubmissionActivity.class);
+//                    startActivity(intent);
+//                    return true;
+//                }
+//                Log.d(TAG, "onMenuItemClick: Submit Click Failed");
+//                return false;
+//            }
+//        });
 
     }
 }
