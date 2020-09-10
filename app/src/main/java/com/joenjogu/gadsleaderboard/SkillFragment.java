@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +38,7 @@ public class SkillFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        ProgressBar progressBar = getView().findViewById(R.id.skill_progress_bar);
         RecyclerView recyclerView = getView().findViewById(R.id.iq_recyclerView);
         SkillAdapter adapter = new SkillAdapter(getContext());
         recyclerView.setAdapter(adapter);
@@ -46,10 +48,12 @@ public class SkillFragment extends Fragment {
         skillViewModelFactory = new SkillViewModelFactory(repository);
         skillViewModel = new ViewModelProvider(this, skillViewModelFactory).get(SkillViewModel.class);
 
+        progressBar.setVisibility(View.VISIBLE);
+
         skillViewModel.getSkillIQ().observe(getViewLifecycleOwner(), skillIQList ->{
 
             adapter.setSkillIQ(skillIQList);
-
+            progressBar.setVisibility(View.GONE);
         });
 
     }

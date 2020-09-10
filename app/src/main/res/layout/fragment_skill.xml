@@ -11,4 +11,11 @@
         android:layout_height="wrap_content"
         tools:listitem="@layout/iq_recyclerview_item"/>
 
+    <ProgressBar
+        android:id="@+id/skill_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"/>
+
 </LinearLayout>

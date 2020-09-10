@@ -51,7 +51,7 @@ public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.SkillViewHol
             SkillIQ skill = skillIQS.get(position);
 
             holder.iqName.setText(skill.getName());
-            holder.iqSkillIQ.setText(skill.getScore().toString());
+            holder.iqSkillIQ.setText(String.format("%s Skill IQ Score,", skill.getScore().toString()));
             holder.iqCountry.setText(skill.getCountry());
 
             Glide.with(holder.itemView.getContext()).load(skill.getBadgeUrl()).into(holder.iqImageView);

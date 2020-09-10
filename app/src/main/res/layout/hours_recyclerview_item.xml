@@ -24,8 +24,8 @@
 
             <ImageView
                 android:id="@+id/iv_top_learner"
-                android:layout_width="173dp"
-                android:layout_height="85dp"
+                android:layout_width="151dp"
+                android:layout_height="86dp"
                 android:layout_margin="@dimen/image_margin"
                 android:layout_marginStart="4dp"
                 android:adjustViewBounds="true"
@@ -69,13 +69,14 @@
                 android:id="@+id/tv_hours_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="2dp"
                 android:text="TextView"
+                android:textAlignment="viewStart"
                 android:textSize="@dimen/default_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_hours_learninghours"
                 app:layout_constraintTop_toBottomOf="@+id/tv_hours_name"
-                app:layout_constraintVertical_bias="0.489" />
+                app:layout_constraintVertical_bias="0.522" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -52,7 +52,7 @@ public class LearningAdapter extends RecyclerView.Adapter<LearningAdapter.Learni
             LearningHours hours = learningHours.get(position);
 
             holder.hoursName.setText(hours.getName());
-            holder.hoursLearningHours.setText(hours.getHours().toString());
+            holder.hoursLearningHours.setText(String.format("%s Learning Hours,",hours.getHours().toString()));
             holder.hoursCountry.setText(hours.getCountry());
 
             Glide.with(holder.itemView.getContext()).load(hours.getBadgeUrl()).into(holder.hoursImageView);

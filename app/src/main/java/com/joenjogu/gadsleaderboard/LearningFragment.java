@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +29,7 @@ public class LearningFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        ProgressBar progressBar = getView().findViewById(R.id.learning_progress_bar);
         RecyclerView recyclerView = getView().findViewById(R.id.hours_recyclerView);
         LearningAdapter adapter = new LearningAdapter(getContext());
         recyclerView.setAdapter(adapter);
@@ -37,9 +39,12 @@ public class LearningFragment extends Fragment {
         hoursViewModelFactory = new HoursViewModelFactory(repository);
         hoursViewModel = new ViewModelProvider(this, hoursViewModelFactory).get(HoursViewModel.class);
 
+        progressBar.setVisibility(View.VISIBLE);
+
         hoursViewModel.getLearningHours().observe(getViewLifecycleOwner(), learningHoursList -> {
 
             adapter.setLearningHours(learningHoursList);
+            progressBar.setVisibility(View.GONE);
         });
 
     }

@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -26,6 +28,7 @@ public class SubmissionActivity extends AppCompatActivity {
     EditText et_firstName, et_lastName, et_email, et_githubLink;
     Button et_submit;
     ImageView back;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,7 @@ public class SubmissionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_submission);
 
         repository = new NetworkRepository();
-
+        progressBar = findViewById(R.id.submission_progress_bar);
         back = findViewById(R.id.iv_back);
         back.setOnClickListener(view -> onBackPressed());
 
@@ -81,6 +84,7 @@ public class SubmissionActivity extends AppCompatActivity {
     }
 
     private void submitUserDetails(String firstName, String lastName, String email, String githubLink) {
+        progressBar.setVisibility(View.VISIBLE);
         // POST details
         Log.d(TAG, "submitUserDetails: submitDetails");
         repository.postUserDetails(firstName, lastName, email, githubLink).enqueue(new Callback<Void>() {
@@ -89,8 +93,10 @@ public class SubmissionActivity extends AppCompatActivity {
                 Log.d(TAG, "submitUserDetails: onResponse " + response.code());
                 if (response.isSuccessful()){
                     Log.d(TAG, "submitUserDetails: successful");
+                    progressBar.setVisibility(View.GONE);
                     displaySuccessDialog();
                 } else{
+                    progressBar.setVisibility(View.GONE);
                     displayErrorDialog();
                 }
             }
@@ -98,6 +104,7 @@ public class SubmissionActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Log.d(TAG, "submitUserDetails: failure");
+                progressBar.setVisibility(View.GONE);
                 t.printStackTrace();
                 displayErrorDialog();
             }

@@ -54,22 +54,5 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),SubmissionActivity.class);
             startActivity(intent);
         });
-
-
-//        topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                if (item.getItemId() == R.id.menu_icon_submit) {
-//                    Log.d(TAG, "onMenuItemClick: Submit Clicked");
-//                    //Intent for Submission Activity
-//                    Intent intent = new Intent(getApplicationContext(),SubmissionActivity.class);
-//                    startActivity(intent);
-//                    return true;
-//                }
-//                Log.d(TAG, "onMenuItemClick: Submit Click Failed");
-//                return false;
-//            }
-//        });
-
     }
 }
