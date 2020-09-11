@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+@SuppressWarnings("unchecked")
 public class HoursViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
     private NetworkRepository repository;
