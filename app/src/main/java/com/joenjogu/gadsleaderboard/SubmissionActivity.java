@@ -14,8 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+import org.jetbrains.annotations.NotNull;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -89,7 +88,7 @@ public class SubmissionActivity extends AppCompatActivity {
         Log.d(TAG, "submitUserDetails: submitDetails");
         repository.postUserDetails(firstName, lastName, email, githubLink).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(@NotNull Call<Void> call, @NotNull Response<Void> response) {
                 Log.d(TAG, "submitUserDetails: onResponse " + response.code());
                 if (response.isSuccessful()){
                     Log.d(TAG, "submitUserDetails: successful");
@@ -102,7 +101,7 @@ public class SubmissionActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(@NotNull Call<Void> call, @NotNull Throwable t) {
                 Log.d(TAG, "submitUserDetails: failure");
                 progressBar.setVisibility(View.GONE);
                 t.printStackTrace();
