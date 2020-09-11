@@ -1,4 +1,6 @@
-package com.joenjogu.gadsleaderboard;
+package com.joenjogu.gadsleaderboard.api;
+
+import com.joenjogu.gadsleaderboard.models.SkillIQ;
 
 import java.util.List;
 

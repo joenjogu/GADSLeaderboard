@@ -1,10 +1,13 @@
-package com.joenjogu.gadsleaderboard;
+package com.joenjogu.gadsleaderboard.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import com.joenjogu.gadsleaderboard.ui.LearningFragment;
+import com.joenjogu.gadsleaderboard.ui.SkillFragment;
 
 
 public class FragmentAdapter extends FragmentStateAdapter {

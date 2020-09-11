@@ -1,4 +1,11 @@
-package com.joenjogu.gadsleaderboard;
+package com.joenjogu.gadsleaderboard.repository;
+
+import com.joenjogu.gadsleaderboard.api.LearningHoursService;
+import com.joenjogu.gadsleaderboard.api.ServiceBuilder;
+import com.joenjogu.gadsleaderboard.api.SkillService;
+import com.joenjogu.gadsleaderboard.api.SubmissionService;
+import com.joenjogu.gadsleaderboard.models.LearningHours;
+import com.joenjogu.gadsleaderboard.models.SkillIQ;
 
 import java.util.List;
 

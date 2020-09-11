@@ -1,4 +1,4 @@
-package com.joenjogu.gadsleaderboard;
+package com.joenjogu.gadsleaderboard.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.joenjogu.gadsleaderboard.R;
+import com.joenjogu.gadsleaderboard.models.SkillIQ;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.joenjogu.gadsleaderboard;
+package com.joenjogu.gadsleaderboard.api;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

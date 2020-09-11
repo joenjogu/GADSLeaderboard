@@ -1,4 +1,4 @@
-package com.joenjogu.gadsleaderboard;
+package com.joenjogu.gadsleaderboard.ui;
 
 import android.content.Intent;
 import android.os.Bundle;

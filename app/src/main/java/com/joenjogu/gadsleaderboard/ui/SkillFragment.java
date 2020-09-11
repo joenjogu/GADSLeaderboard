@@ -1,4 +1,4 @@
-package com.joenjogu.gadsleaderboard;
+package com.joenjogu.gadsleaderboard.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.joenjogu.gadsleaderboard.R;
+import com.joenjogu.gadsleaderboard.adapters.SkillAdapter;
+import com.joenjogu.gadsleaderboard.repository.NetworkRepository;
+import com.joenjogu.gadsleaderboard.viewmodel.SkillViewModel;
+import com.joenjogu.gadsleaderboard.viewmodel.SkillViewModelFactory;
 
 import java.util.Objects;
 

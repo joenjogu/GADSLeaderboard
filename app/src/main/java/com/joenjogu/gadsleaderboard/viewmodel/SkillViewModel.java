@@ -1,8 +1,11 @@
-package com.joenjogu.gadsleaderboard;
+package com.joenjogu.gadsleaderboard.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.joenjogu.gadsleaderboard.models.SkillIQ;
+import com.joenjogu.gadsleaderboard.repository.NetworkRepository;
 
 import org.jetbrains.annotations.NotNull;
 

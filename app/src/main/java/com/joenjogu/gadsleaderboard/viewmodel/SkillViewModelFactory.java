@@ -1,8 +1,10 @@
-package com.joenjogu.gadsleaderboard;
+package com.joenjogu.gadsleaderboard.viewmodel;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.joenjogu.gadsleaderboard.repository.NetworkRepository;
 
 @SuppressWarnings("unchecked")
 public class SkillViewModelFactory extends ViewModelProvider.NewInstanceFactory {

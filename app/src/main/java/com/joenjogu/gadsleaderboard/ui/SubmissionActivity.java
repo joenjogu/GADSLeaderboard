@@ -1,6 +1,4 @@
-package com.joenjogu.gadsleaderboard;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.joenjogu.gadsleaderboard.ui;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -13,6 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.joenjogu.gadsleaderboard.R;
+import com.joenjogu.gadsleaderboard.repository.NetworkRepository;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -120,7 +123,7 @@ public class SubmissionActivity extends AppCompatActivity {
         ImageView cancelButton = dialog.findViewById(R.id.btn_dialog_cancel);
         Button yesButton = dialog.findViewById(R.id.btn_submit_yes);
 
-        cancelButton.setOnClickListener(view -> {dialog.cancel();});
+        cancelButton.setOnClickListener(view -> dialog.cancel());
         yesButton.setOnClickListener(view -> {
             submitUserDetails(firstName, lastName, email, githubLink);
             dialog.dismiss();

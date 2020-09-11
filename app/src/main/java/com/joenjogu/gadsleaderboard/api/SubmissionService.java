@@ -1,4 +1,4 @@
-package com.joenjogu.gadsleaderboard;
+package com.joenjogu.gadsleaderboard.api;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

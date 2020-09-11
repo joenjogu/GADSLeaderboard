@@ -1,4 +1,4 @@
-package com.joenjogu.gadsleaderboard;
+package com.joenjogu.gadsleaderboard.models;
 
 import com.google.gson.annotations.SerializedName;
 

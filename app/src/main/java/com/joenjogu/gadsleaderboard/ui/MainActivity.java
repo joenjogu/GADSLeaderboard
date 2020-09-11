@@ -1,14 +1,16 @@
-package com.joenjogu.gadsleaderboard;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
+package com.joenjogu.gadsleaderboard.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.joenjogu.gadsleaderboard.R;
+import com.joenjogu.gadsleaderboard.adapters.FragmentAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayoutMediator.attach();
 
         submit.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(),SubmissionActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SubmissionActivity.class);
             startActivity(intent);
         });
     }
