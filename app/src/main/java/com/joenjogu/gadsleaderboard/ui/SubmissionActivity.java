@@ -80,7 +80,7 @@ public class SubmissionActivity extends AppCompatActivity {
                     TextUtils.isEmpty(et_email.getError()) &&
                     TextUtils.isEmpty(et_githubLink.getError())) {
 
-                submissionConfirmation(firstName, lastName, email, githubLink);
+                submissionConfirmation(firstName.trim(), lastName.trim(), email.trim(), githubLink.trim());
             }
         });
     }
