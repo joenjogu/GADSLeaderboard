@@ -23,7 +23,7 @@ public class HoursViewModel extends ViewModel {
 
     public LiveData<List<LearningHours>> getLearningHours(){
         if(learningHours == null){
-            learningHours = new MutableLiveData<List<LearningHours>>();
+            learningHours = new MutableLiveData<>();
 
             learningHoursCall(this.repository);
         }
