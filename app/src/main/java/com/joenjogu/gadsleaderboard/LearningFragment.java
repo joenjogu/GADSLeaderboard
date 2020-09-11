@@ -13,6 +13,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Objects;
+
+@SuppressWarnings("FieldCanBeLocal")
 public class LearningFragment extends Fragment {
 
     private HoursViewModel hoursViewModel;
@@ -21,7 +24,10 @@ public class LearningFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_learning, container, false);
     }
 
@@ -29,7 +35,9 @@ public class LearningFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ProgressBar progressBar = getView().findViewById(R.id.learning_progress_bar);
+        ProgressBar progressBar = Objects.requireNonNull(
+                getView()
+        ).findViewById(R.id.learning_progress_bar);
         RecyclerView recyclerView = getView().findViewById(R.id.hours_recyclerView);
         LearningAdapter adapter = new LearningAdapter(getContext());
         recyclerView.setAdapter(adapter);
@@ -37,7 +45,10 @@ public class LearningFragment extends Fragment {
 
         repository = new NetworkRepository();
         hoursViewModelFactory = new HoursViewModelFactory(repository);
-        hoursViewModel = new ViewModelProvider(this, hoursViewModelFactory).get(HoursViewModel.class);
+        hoursViewModel = new ViewModelProvider(
+                this,
+                hoursViewModelFactory
+        ).get(HoursViewModel.class);
 
         progressBar.setVisibility(View.VISIBLE);
 
