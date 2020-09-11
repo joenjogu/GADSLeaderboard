@@ -24,7 +24,7 @@ public class SkillViewModel extends ViewModel {
 
     public LiveData<List<SkillIQ>> getSkillIQ(){
         if (skillIQ == null){
-            skillIQ = new MutableLiveData<List<SkillIQ>>();
+            skillIQ = new MutableLiveData<>();
 
             skillIQCall(this.repository);
         }
